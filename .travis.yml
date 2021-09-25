@@ -6,6 +6,7 @@ python:
   - 3.9
 
 install:
+  - travis_wait mvn install
   - sudo apt -y install python3-distutils
   - sudo apt -y install python3-pip
   - sudo apt install -y git
@@ -20,15 +21,14 @@ install:
   - ls -l
 
   - sudo apt update
-  - sudo apt install -travis_wait -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
-  - pip3 install -travis_wait --upgrade Cython==0.29.22 virtualenv
+  - sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+  - pip3 install --upgrade Cython==0.29.22 virtualenv
   - export PATH=$PATH:~/.local/bin/
   - ls -l
   - yes | buildozer android debug
   - ls -la
   - ls bin/ -l
   - echo "TODO"
-  - gem install -travis_wait dpl --pre
+  - gem install dpl --pre
   - dpl releases --token $GITHUB_TOKEN --file "bin/test1-0.1-armeabi-v7a-debug.apk" --tag_name "v.0.1"
   - echo "TODO 2"
-  - travis_wait
